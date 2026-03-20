@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
+                   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+                   font-src 'self' https://fonts.gstatic.com; 
+                   img-src 'self' data: https:; 
+                   script-src 'self' 'unsafe-inline';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dachfenster | Zimmerei Müller</title>
+    <meta name="description" content="Mehr Licht und Luft mit neuen Dachfenstern. Einbau und Austausch vom Profi.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Markenfarben */
+            --brand-red: #B32D24;
+            --brand-red-dark: #8B241D;
+            --brand-yellow: #F9D800;
+            --brand-yellow-light: #FFE53B;
+
+            /* Design-System */
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E5E5;
+            --gray-300: #D4D4D4;
+            --gray-500: #737373;
+            --gray-700: #404040;
+            --gray-900: #171717;
+
+            /* Abstände */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+
+            /* Typografie */
+            --font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--white);
+            color: var(--gray-900);
+            line-height: 1.6;
+        }
+
+        /* ===================== NAVIGATION ===================== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+            color: var(--gray-900);
+            transition: all 0.2s;
+        }
+
+        .nav-logo:hover {
+            transform: translateY(-2px);
+            filter: drop-shadow(0 6px 16px rgba(210, 53, 38, 0.3));
+        }
+
+        .nav-logo-img {
+            height: 54px;
+            width: auto;
+            border-radius: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--brand-red);
+        }
+
+        .nav-cta {
+            padding: 10px 20px;
+            background: #D23526;
+            color: #FAE439;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: all 0.2s;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000, 1px 0 0 #000;
+        }
+
+        .nav-cta:hover {
+            background: var(--brand-red-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(210, 53, 38, 0.3);
+        }
+
+        /* ===================== DROPDOWN MENU ===================== */
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .dropdown-icon {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.2s;
+        }
+
+        .nav-dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            min-width: 200px;
+            padding: var(--space-xs) 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+            z-index: 1000;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--gray-700);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-dropdown-menu a:hover {
+            background: var(--gray-50);
+            color: var(--brand-red);
+            padding-left: 24px;
+        }
+
+        /* Mobile Dropdown */
+        .mobile-dropdown {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-dropdown-toggle {
+            text-decoration: none;
+            color: var(--gray-900);
+            font-size: 18px;
+            font-weight: 600;
+            padding: var(--space-md);
+            border-radius: 8px;
+            transition: background 0.2s;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mobile-dropdown-toggle::after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.2s;
+        }
+
+        .mobile-dropdown-toggle.active::after {
+            transform: rotate(180deg);
+        }
+
+        .mobile-dropdown-toggle:hover {
+            background: var(--gray-100);
+        }
+
+        .mobile-dropdown-menu {
+            display: none;
+            flex-direction: column;
+            padding-left: var(--space-md);
+            gap: 4px;
+        }
+
+        .mobile-dropdown-menu.active {
+            display: flex;
+        }
+
+        .mobile-dropdown-menu a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px var(--space-md);
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            background: var(--gray-100);
+            color: var(--brand-red);
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            gap: 5px;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--gray-700);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--white);
+            z-index: 99;
+            padding: var(--space-lg);
+            flex-direction: column;
+            gap: var(--space-md);
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--gray-900);
+            font-size: 18px;
+            font-weight: 600;
+            padding: var(--space-md);
+            border-radius: 8px;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--gray-100);
+        }
+
+        .mobile-menu .nav-cta {
+            background: var(--brand-red);
+            color: var(--white);
+            text-align: center;
+            margin-top: var(--space-md);
+        }
+
+        /* ===================== DETAIL PAGE LAYOUT ===================== */
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: calc(72px + var(--space-lg)) var(--space-lg) var(--space-2xl);
+            min-height: 80vh;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--gray-500);
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: var(--space-lg);
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--brand-red);
+        }
+
+        .detail-header {
+            margin-bottom: var(--space-xl);
+        }
+
+        .detail-brand-title {
+            color: var(--brand-red);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .detail-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--gray-900);
+            line-height: 1.1;
+        }
+
+        /* 2-Spalten Grid */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 4fr 6fr;
+            /* 40% Bild, 60% Inhalt */
+            gap: var(--space-2xl);
+            align-items: start;
+        }
+
+        /* Linke Spalte: Bild */
+        .detail-image-container {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 3/4;
+        }
+
+        /* Rechte Spalte: Accordions */
+        .detail-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        /* Accordion Styles */
+        .accordion-item {
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .accordion-header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-md) 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            transition: color 0.2s;
+        }
+
+        .accordion-header:hover .accordion-title {
+            color: var(--brand-red);
+        }
+
+        .accordion-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            transition: color 0.2s;
+        }
+
+        .accordion-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--brand-red);
+            transition: transform 0.3s;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .accordion-content {
+            padding-bottom: var(--space-lg);
+            color: var(--gray-700);
+            font-size: 1.05rem;
+        }
+
+        .accordion-content p {
+            margin-bottom: 1rem;
+        }
+
+        .accordion-content ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .accordion-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .accordion-content li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--brand-red);
+            font-weight: bold;
+        }
+
+        /* Velux Image Link */
+        .velux-partner-link {
+            display: inline-block;
+            margin-top: var(--space-md);
+            text-decoration: none;
+        }
+
+        .velux-partner-img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            max-height: 90px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .velux-partner-text {
+            display: block;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-top: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .velux-partner-link:hover .velux-partner-img {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(210, 53, 38, 0.7);
+        }
+
+        .velux-partner-link:hover .velux-partner-text {
+            color: var(--brand-red);
+        }
+
+        /* Konfigurator Button */
+        .configurator-btn {
+            height: 90px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.3;
+            padding: 0 20px;
+            background: #D23526;
+            color: #FAE439;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.6), 1px -1px 0 rgba(0, 0, 0, 0.6), -1px 1px 0 rgba(0, 0, 0, 0.6), 1px 1px 0 rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(0, 0, 0, 0.6), 0 1px 0 rgba(0, 0, 0, 0.6), -1px 0 0 rgba(0, 0, 0, 0.6), 1px 0 0 rgba(0, 0, 0, 0.6);
+            transition: all 0.2s;
+        }
+
+        .configurator-btn:hover {
+            background: var(--brand-red-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(210, 53, 38, 0.3);
+        }
+
+        /* Reference Link */
+        .reference-link-block {
+            margin-top: var(--space-md);
+            border-top: 1px solid var(--gray-200);
+            padding-top: var(--space-md);
+        }
+
+        .reference-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .reference-link:hover {
+            color: var(--brand-red);
+        }
+
+        .reference-link svg {
+            transition: transform 0.2s;
+        }
+
+        .reference-link:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            padding: var(--space-xl) var(--space-lg);
+            background: #D23526;
+            color: #FAE439;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-lg);
+        }
+
+        .footer-link {
+            font-size: 14px;
+            color: #FAE439;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .detail-image {
+                aspect-ratio: 16/9;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="zimmerei-mueller-frontpage.html" class="nav-logo">
+                <img src="Pictures/Müller_Logo nur Holzbau ROT.png" alt="Holzbau-Zimmerei Müller" class="nav-logo-img">
+            </a>
+            <div class="nav-links">
+                <div class="nav-dropdown">
+                    <a href="zimmerei-mueller-frontpage.html#leistungen" class="nav-link nav-dropdown-toggle">
+                        Leistungen
+                        <svg class="dropdown-icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="massivholzhaus.html">Massivholzhaus</a>
+                        <a href="neubau.html">Neubau</a>
+                        <a href="dachsanierung.html">Dachsanierung</a>
+                        <a href="holzrahmenbau.html">Holzrahmenbau</a>
+                        <a href="dachfenster.html">Dachfenster</a>
+                        <a href="aufstockungen.html">Aufstockungen</a>
+                        <a href="dachgauben.html">Dachgauben</a>
+                        <a href="treppenbau.html">Treppenbau</a>
+                        <a href="asbestsanierung.html">Asbestsanierung</a>
+                    </div>
+                </div>
+                <a href="zimmerei-mueller-frontpage.html#referenzen" class="nav-link">Referenzen</a>
+                <a href="ueber-uns.html" class="nav-link">Über uns</a>
+                <a href="zimmerei-mueller-frontpage.html#kontakt" class="nav-cta">Kontakt aufnehmen</a>
+            </div>
+            <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-dropdown">
+            <button class="mobile-dropdown-toggle" id="mobileDropdownToggle">Leistungen</button>
+            <div class="mobile-dropdown-menu" id="mobileDropdownMenu">
+                <a href="massivholzhaus.html" onclick="closeMenu()">Massivholzhaus</a>
+                <a href="neubau.html" onclick="closeMenu()">Neubau</a>
+                <a href="dachsanierung.html" onclick="closeMenu()">Dachsanierung</a>
+                <a href="holzrahmenbau.html" onclick="closeMenu()">Holzrahmenbau</a>
+                <a href="dachfenster.html" onclick="closeMenu()">Dachfenster</a>
+                <a href="aufstockungen.html" onclick="closeMenu()">Aufstockungen</a>
+                <a href="dachgauben.html" onclick="closeMenu()">Dachgauben</a>
+                <a href="treppenbau.html" onclick="closeMenu()">Treppenbau</a>
+                <a href="asbestsanierung.html" onclick="closeMenu()">Asbestsanierung</a>
+            </div>
+        </div>
+        <a href="zimmerei-mueller-frontpage.html#referenzen" onclick="closeMenu()">Referenzen</a>
+        <a href="ueber-uns.html" onclick="closeMenu()">Über uns</a>
+        <a href="zimmerei-mueller-frontpage.html#kontakt" class="nav-cta" onclick="closeMenu()">Kontakt aufnehmen</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="page-container">
+
+        <!-- Back Link -->
+        <a href="zimmerei-mueller-frontpage.html#leistungen" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Zurück zur Übersicht
+        </a>
+
+        <div class="detail-header">
+            <p class="detail-brand-title">Zimmerei Müller</p>
+            <h1 class="detail-title">Dachfenster</h1>
+        </div>
+
+        <div class="detail-grid">
+            <!-- Left: Image -->
+            <div class="detail-image-container">
+                <img src="Pictures/Dachfenster-mit-Hund.png" alt="Dachfenster Zimmerei Müller" class="detail-image">
+            </div>
+
+            <!-- Right: Content Accordions -->
+            <div class="detail-content">
+
+                <!-- Accordion 1: Philosophie -->
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="accordion-title">Warum neue Dachfenster? Unsere Philosophie</span>
+                        <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p>Die VELUX-Partnerschaft bekommen nicht alle. Sie setzt voraus: regelmäßige Schulungen,
+                                nachgewiesene Projekterfahrung und technisches Know-how auf höchstem Niveau. Wir
+                                erfüllen diese Anforderungen – und bauen Ihnen deshalb Dachfenster ein, die ein
+                                Handwerkerleben lang dicht bleiben.</p>
+                            <p>Durch unsere langjährige Zusammenarbeit mit VELUX haben wir hunderte Fenster verbaut –
+                                vom klassischen Dachflächenfenster bis zur komplexen Gauben-Kombination. Diese Erfahrung
+                                zahlt sich für Sie aus: Schnellere Montage, sichere Abdichtung, und bei Fragen haben wir
+                                direkten Draht zum Hersteller.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion 2: Leistungen -->
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="accordion-title">Ihr Projekt in guten Händen: Unsere Leistungen</span>
+                        <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p>Unsere Leistungen im Bereich Dachfenster umfassen:</p>
+                            <ul>
+                                <li>Beratung vor Ort: Fenstertyp, Größe und optimale Platzierung</li>
+                                <li>Austausch alter Dachfenster – passgenau auf bestehende Öffnungen</li>
+                                <li>Neueinbau für mehr Tageslicht und Belüftung</li>
+                                <li>Statikprüfung und fachgerechter Sparreneinschnitt</li>
+                                <li>Wärmebrückenfreie Montage nach Herstellervorgaben</li>
+                                <li>Professionelle Abdichtung gegen Regen und Feuchtigkeit</li>
+                                <li>Zubehör-Montage: Rollläden, Sonnenschutz, Hitzeschutz</li>
+                                <li>Wartung, Reparatur und Dichtungserneuerung</li>
+                                <li>VELUX-Expertenpartner mit langjähriger Einbauerfahrung</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partner und Konfigurator Bereich -->
+                <div class="partner-configurator-container"
+                    style="display: flex; gap: var(--space-md); align-items: flex-start; margin-top: var(--space-md); flex-wrap: wrap;">
+
+                    <!-- VELUX Partner Image Link -->
+                    <a href="https://www.velux.de/produkte/dachfenster" target="_blank" rel="noopener noreferrer"
+                        class="velux-partner-link" style="margin-top: 0; display: block;">
+                        <img src="Pictures/VELUX_Logo_original.png" alt="VELUX Dachfenster" class="velux-partner-img"
+                            style="height: 90px;">
+                        <span class="velux-partner-text">Wir sind <strong>VELUX - Premium Partner</strong></span>
+                    </a>
+
+                    <!-- Konfigurator Button -->
+                    <a href="https://dachfensterkonfigurator.de/konfigurator/stufe/dachfenster-konfiguration"
+                        target="_blank" rel="noopener noreferrer" class="configurator-btn">
+                        Hier geht es zum<br>Dachfensterkonfigurator
+                    </a>
+                </div>
+
+                <!-- Reference Link -->
+                <div class="reference-link-block">
+                    <a href="zimmerei-mueller-frontpage.html#referenzen" class="reference-link">
+                        Referenzen ansehen
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                © 2026 Holzbau-Zimmerei Müller GmbH · Schnittlingen
+            </div>
+            <div class="footer-links">
+                <a href="impressum.html" class="footer-link">Impressum</a>
+                <a href="datenschutz.html" class="footer-link">Datenschutz</a>
+                <a href="agb.html" class="footer-link">AGB</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Scripts
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileDropdownToggle = document.getElementById('mobileDropdownToggle');
+        const mobileDropdownMenu = document.getElementById('mobileDropdownMenu');
+
+        hamburger.addEventListener('click', function () {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Mobile dropdown toggle
+        if (mobileDropdownToggle) {
+            mobileDropdownToggle.addEventListener('click', function () {
+                mobileDropdownToggle.classList.toggle('active');
+                mobileDropdownMenu.classList.toggle('active');
+            });
+        }
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            if (mobileDropdownToggle) {
+                mobileDropdownToggle.classList.remove('active');
+                mobileDropdownMenu.classList.remove('active');
+            }
+        }
+
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                closeMenu();
+            }
+        });
+
+        // Accordion Logic
+        const accordions = document.querySelectorAll('.accordion-header');
+
+        function toggleAccordion(e) {
+            const button = e.currentTarget;
+            const content = button.nextElementSibling;
+            const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+            // Toggle current
+            if (isOpen) {
+                button.setAttribute('aria-expanded', 'false');
+                button.parentElement.classList.remove('active');
+                content.style.maxHeight = null;
+            } else {
+                button.setAttribute('aria-expanded', 'true');
+                button.parentElement.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+
+        accordions.forEach(acc => {
+            acc.addEventListener('click', toggleAccordion);
+        });
+    </script>
+</body>
+
+</html>

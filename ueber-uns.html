@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
+                   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+                   font-src 'self' https://fonts.gstatic.com; 
+                   img-src 'self' data: https:; 
+                   script-src 'self' 'unsafe-inline';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über uns | Zimmerei Müller</title>
+    <meta name="description"
+        content="Erfahren Sie mehr über die Geschichte und das Team der Zimmerei Müller – Tradition und Handwerkskunst seit Generationen.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Markenfarben aus Logo */
+            --brand-red: #D23526;
+            --brand-red-dark: #8B241D;
+            --brand-yellow: #FAE439;
+            --brand-yellow-light: #FFE53B;
+
+            /* Design-System */
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E5E5;
+            --gray-300: #D4D4D4;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-900: #171717;
+
+            /* Abstände */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+
+            /* Typografie */
+            --font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--white);
+            color: var(--gray-900);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* ===================== NAVIGATION ===================== */
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+            color: var(--gray-900);
+            transition: all 0.2s;
+        }
+
+        .nav-logo:hover {
+            transform: translateY(-2px);
+            filter: drop-shadow(0 6px 16px rgba(210, 53, 38, 0.3));
+        }
+
+        .nav-logo-img {
+            height: 54px;
+            width: auto;
+            border-radius: 4px;
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            gap: 5px;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--gray-700);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--white);
+            z-index: 99;
+            padding: var(--space-lg);
+            flex-direction: column;
+            gap: var(--space-md);
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--gray-900);
+            font-size: 18px;
+            font-weight: 600;
+            padding: var(--space-md);
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--gray-100);
+        }
+
+        .mobile-menu .nav-cta {
+            background: var(--brand-red);
+            color: var(--brand-yellow);
+            text-align: center;
+            margin-top: var(--space-md);
+        }
+
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-logo-name {
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+            color: var(--gray-900);
+        }
+
+        .nav-logo-sub {
+            font-size: 12px;
+            color: var(--gray-500);
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--brand-red);
+        }
+
+        /* ===================== DROPDOWN MENU ===================== */
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .dropdown-icon {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.2s;
+        }
+
+        .nav-dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            min-width: 200px;
+            padding: var(--space-xs) 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+            z-index: 1000;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--gray-700);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-dropdown-menu a:hover {
+            background: var(--gray-50);
+            color: var(--brand-red);
+            padding-left: 24px;
+        }
+
+        /* Mobile Dropdown */
+        .mobile-dropdown {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-dropdown-toggle {
+            text-decoration: none;
+            color: var(--gray-900);
+            font-size: 18px;
+            font-weight: 600;
+            padding: var(--space-md);
+            border-radius: 8px;
+            transition: background 0.2s;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mobile-dropdown-toggle::after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.2s;
+        }
+
+        .mobile-dropdown-toggle.active::after {
+            transform: rotate(180deg);
+        }
+
+        .mobile-dropdown-toggle:hover {
+            background: var(--gray-100);
+        }
+
+        .mobile-dropdown-menu {
+            display: none;
+            flex-direction: column;
+            padding-left: var(--space-md);
+            gap: 4px;
+        }
+
+        .mobile-dropdown-menu.active {
+            display: flex;
+        }
+
+        .mobile-dropdown-menu a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px var(--space-md);
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            background: var(--gray-100);
+            color: var(--brand-red);
+        }
+
+        .nav-cta {
+            padding: 10px 20px;
+            background: var(--brand-red);
+            color: var(--brand-yellow);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: all 0.2s;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000, 1px 0 0 #000;
+        }
+
+        .nav-cta:hover {
+            background: var(--brand-red-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(210, 53, 38, 0.3);
+        }
+
+        /* ===================== PAGE HEADER ===================== */
+
+        .page-header {
+            padding: calc(72px + var(--space-3xl)) var(--space-lg) var(--space-2xl);
+            background: var(--white);
+            text-align: center;
+        }
+
+        .page-header-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-tagline {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--brand-red);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+
+        .page-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: var(--gray-900);
+            margin-bottom: var(--space-md);
+        }
+
+        .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* ===================== REGIONAL SECTION ===================== */
+
+        .regional-section {
+            padding: calc(72px + 60px) var(--space-lg) 60px;
+            background: var(--white);
+        }
+
+        .regional-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .regional-heading {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .regional-grid {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .regional-image {
+            width: 100%;
+        }
+
+        .team-photo {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+        }
+
+        .regional-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .regional-intro {
+            font-size: 1.125rem;
+            line-height: 1.5;
+            color: #333333;
+        }
+
+        .regional-stats-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl) var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+
+        .experience-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-number {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            /* Verkleinert für Matrix */
+            font-weight: 800;
+            color: #D23526;
+            line-height: 1;
+        }
+
+        .stat-label-text {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        .radius-map {
+            margin-top: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .regional-section {
+                padding: calc(72px + 40px) var(--space-lg) 40px;
+            }
+
+            .regional-heading {
+                margin-bottom: 40px;
+                font-size: 1.75rem;
+            }
+
+            .regional-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .regional-intro {
+                font-size: 1rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .radius-map {
+                margin-top: 20px;
+            }
+
+            .radius-map svg {
+                max-width: 100% !important;
+            }
+        }
+
+        /* ===================== GESCHICHTE SECTION ===================== */
+
+        .history-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--gray-50);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-3xl);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--gray-900);
+            margin-bottom: var(--space-md);
+        }
+
+        .section-description {
+            font-size: 1rem;
+            color: var(--gray-600);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===================== TIMELINE – Vertikal, alternierend ===================== */
+        .timeline-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-2xl) 0;
+            position: relative;
+        }
+
+        /* Zentrale vertikale Linie */
+        .timeline-items-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .timeline-items-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #D23526, #E8512D, #F77F35, #FFB83D, #FAD03A, #FAE439);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Ein Zeitleisten-Eintrag */
+        .timeline-item-mobile {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            align-items: center;
+            gap: 0;
+            min-height: 40px;
+            /* Weiter reduziert für 2cm Abstand */
+            padding: 0;
+            /* Padding komplett entfernt */
+            margin-top: -30px;
+            /* Reduziert von -80px für bündigen Abschluss */
+        }
+
+        /* Der erste Eintrag darf keinen negativen margin bekommen */
+        .timeline-item-mobile:first-child {
+            margin-top: 0;
+        }
+
+        /* Karte links (ungerade) */
+        .timeline-item-mobile:nth-child(odd) .timeline-card {
+            grid-column: 1;
+            grid-row: 1;
+            text-align: right;
+            margin-right: var(--space-md);
+            /* Leicht reduziert */
+        }
+
+        .timeline-item-mobile:nth-child(odd) .chevron {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        /* Platzhalter rechts (ungerade) */
+        .timeline-item-mobile:nth-child(odd)::after {
+            content: '';
+            grid-column: 3;
+            grid-row: 1;
+        }
+
+        /* Platzhalter links (gerade) */
+        .timeline-item-mobile:nth-child(even)::before {
+            content: '';
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .timeline-item-mobile:nth-child(even) .chevron {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        /* Karte rechts (gerade) */
+        .timeline-item-mobile:nth-child(even) .timeline-card {
+            grid-column: 3;
+            grid-row: 1;
+            text-align: left;
+            margin-left: var(--space-lg);
+        }
+
+        /* Jahres-Badge (mittig auf der Linie) */
+        .chevron {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .chevron:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Farbgradient für 6 Einträge: Rot → Gelb */
+        .timeline-item-mobile:nth-child(1) .chevron {
+            background: #D23526;
+        }
+
+        .timeline-item-mobile:nth-child(2) .chevron {
+            background: #E04B28;
+        }
+
+        .timeline-item-mobile:nth-child(3) .chevron {
+            background: #EF7030;
+        }
+
+        .timeline-item-mobile:nth-child(4) .chevron {
+            background: #F79638;
+        }
+
+        .timeline-item-mobile:nth-child(5) .chevron {
+            background: #FBBA3C;
+        }
+
+        .timeline-item-mobile:nth-child(6) .chevron {
+            background: #FAE439;
+        }
+
+        .chevron-year {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--white);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.01em;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* Letzter Eintrag: gelber Badge → dunkler Text */
+        .timeline-item-mobile:nth-child(6) .chevron-year {
+            color: rgba(0, 0, 0, 0.75);
+            text-shadow: none;
+        }
+
+        /* Karten */
+        .timeline-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(210, 53, 38, 0.15);
+        }
+
+        .timeline-card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+
+        .timeline-card-text {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* ===================== TEAM SECTION ===================== */
+
+        .team-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--white);
+        }
+
+        .team-intro {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .team-main-photo {
+            max-width: 1000px;
+            margin: 0 auto var(--space-3xl);
+            background: var(--gray-100);
+            border-radius: 16px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-400);
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .team-main-photo svg {
+            width: 64px;
+            height: 64px;
+        }
+
+        .team-main-photo span {
+            font-size: 15px;
+        }
+
+        .leadership-section {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .leadership-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            color: var(--gray-900);
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+        }
+
+        .leader-card {
+            background: var(--gray-50);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(210, 53, 38, 0.15);
+        }
+
+        .leader-photo {
+            aspect-ratio: 4/3;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-400);
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+
+        .leader-photo svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        .leader-info {
+            padding: var(--space-lg);
+        }
+
+        .leader-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--space-xs);
+        }
+
+        .leader-title {
+            font-size: 0.9375rem;
+            color: var(--brand-red);
+            font-weight: 600;
+        }
+
+        /* ===================== FOOTER ===================== */
+
+        .footer {
+            padding: var(--space-xl) var(--space-lg);
+            background: #D23526;
+            color: #FAE439;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-size: 14px;
+            color: #FAE439;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-lg);
+        }
+
+        .footer-link {
+            font-size: 14px;
+            color: #FAE439;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            /* Mobile Timeline – vereinfacht: Linie links, Karte rechts */
+            .timeline-container {
+                padding: var(--space-xl) 0;
+            }
+
+            .timeline-items-wrapper::before {
+                left: 36px;
+                transform: none;
+            }
+
+            .timeline-item-mobile {
+                grid-template-columns: 72px 1fr;
+                gap: 0;
+                padding: var(--space-md) 0;
+                min-height: auto;
+                margin-top: 0;
+                /* Negativen Margin für Mobile zurücksetzen, da alles auf einer Seite ist */
+            }
+
+            /* Alle Karten rechts */
+            .timeline-item-mobile:nth-child(odd) .timeline-card,
+            .timeline-item-mobile:nth-child(even) .timeline-card {
+                grid-column: 2;
+                grid-row: 1;
+                text-align: left;
+                margin-right: 0;
+                margin-left: var(--space-md);
+            }
+
+            /* Badge immer Spalte 1 */
+            .timeline-item-mobile:nth-child(odd) .chevron,
+            .timeline-item-mobile:nth-child(even) .chevron {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            /* Pseudo-Elemente deaktivieren */
+            .timeline-item-mobile:nth-child(odd)::after,
+            .timeline-item-mobile:nth-child(even)::before {
+                display: none;
+            }
+
+            .chevron {
+                width: 64px;
+                height: 64px;
+            }
+
+            .chevron-year {
+                font-size: 0.8rem;
+            }
+
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="zimmerei-mueller-frontpage.html" class="nav-logo">
+                <img src="Pictures/Müller_Logo nur Holzbau ROT.png" alt="Holzbau-Zimmerei Müller" class="nav-logo-img">
+            </a>
+            <div class="nav-links">
+                <div class="nav-dropdown">
+                    <a href="zimmerei-mueller-frontpage.html#leistungen" class="nav-link nav-dropdown-toggle">
+                        Leistungen
+                        <svg class="dropdown-icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="massivholzhaus.html">Massivholzhaus</a>
+                        <a href="neubau.html">Neubau</a>
+                        <a href="dachsanierung.html">Dachsanierung</a>
+                        <a href="holzrahmenbau.html">Holzrahmenbau</a>
+                        <a href="dachfenster.html">Dachfenster</a>
+                        <a href="aufstockungen.html">Aufstockungen</a>
+                        <a href="dachgauben.html">Dachgauben</a>
+                        <a href="treppenbau.html">Treppenbau</a>
+                        <a href="asbestsanierung.html">Asbestsanierung</a>
+                    </div>
+                </div>
+                <a href="referenzen.html" class="nav-link">Referenzen</a>
+                <a href="ueber-uns.html" class="nav-link">Über uns</a>
+                <a href="zimmerei-mueller-frontpage.html#kontakt" class="nav-cta">Kontakt aufnehmen</a>
+            </div>
+            <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-dropdown">
+            <button class="mobile-dropdown-toggle" id="mobileDropdownToggle">Leistungen</button>
+            <div class="mobile-dropdown-menu" id="mobileDropdownMenu">
+                <a href="massivholzhaus.html" onclick="closeMenu()">Massivholzhaus</a>
+                <a href="neubau.html" onclick="closeMenu()">Neubau</a>
+                <a href="dachsanierung.html" onclick="closeMenu()">Dachsanierung</a>
+                <a href="holzrahmenbau.html" onclick="closeMenu()">Holzrahmenbau</a>
+                <a href="dachfenster.html" onclick="closeMenu()">Dachfenster</a>
+                <a href="aufstockungen.html" onclick="closeMenu()">Aufstockungen</a>
+                <a href="dachgauben.html" onclick="closeMenu()">Dachgauben</a>
+                <a href="treppenbau.html" onclick="closeMenu()">Treppenbau</a>
+                <a href="asbestsanierung.html" onclick="closeMenu()">Asbestsanierung</a>
+            </div>
+        </div>
+        <a href="referenzen.html" onclick="closeMenu()">Referenzen</a>
+        <a href="ueber-uns.html" onclick="closeMenu()">Über uns</a>
+        <a href="zimmerei-mueller-frontpage.html#kontakt" class="nav-cta" onclick="closeMenu()">Kontakt aufnehmen</a>
+    </div>
+
+    <!-- Handwerk mit Stolz Section -->
+    <section class="regional-section">
+        <div class="regional-container">
+            <!-- Full-width Heading -->
+            <h1 class="regional-heading">Handwerk mit Stolz. Regional verwurzelt.</h1>
+
+            <!-- Two Column Layout -->
+            <div class="regional-grid">
+                <!-- Left Column: Radius Map -->
+                <div class="regional-image radius-map-container">
+                    <div class="radius-map" style="margin-top: 0;">
+                        <svg viewBox="0 0 500 500" style="width: 100%; max-width: 450px; height: auto;">
+                            <!-- Outer circle - 30km -->
+                            <circle cx="250" cy="250" r="220" fill="none" stroke="rgba(210, 53, 38, 0.5)"
+                                stroke-width="2" />
+                            <text x="250" y="45" text-anchor="middle" fill="#D94A3D" font-size="14" font-weight="500">30
+                                km</text>
+
+                            <!-- Middle circle - 20km -->
+                            <circle cx="250" cy="250" r="176" fill="none" stroke="rgba(210, 53, 38, 0.5)"
+                                stroke-width="2" />
+                            <text x="250" y="89" text-anchor="middle" fill="#D94A3D" font-size="14" font-weight="500">20
+                                km</text>
+
+                            <!-- Inner circle - 10km -->
+                            <circle cx="250" cy="250" r="88" fill="none" stroke="rgba(210, 53, 38, 0.5)"
+                                stroke-width="2" />
+                            <text x="250" y="177" text-anchor="middle" fill="#D94A3D" font-size="14"
+                                font-weight="500">10 km</text>
+
+                            <!--  Center - Schnittlingen with crosshair -->
+                            <g>
+                                <!-- Crosshair circles -->
+                                <circle cx="250" cy="250" r="20" fill="none" stroke="#333333" stroke-width="2" />
+                                <circle cx="250" cy="250" r="12" fill="none" stroke="#333333" stroke-width="2" />
+                                <circle cx="250" cy="250" r="4" fill="#333333" />
+                                <!-- Crosshair lines -->
+                                <line x1="250" y1="226" x2="250" y2="234" stroke="#333333" stroke-width="2" />
+                                <line x1="250" y1="266" x2="250" y2="274" stroke="#333333" stroke-width="2" />
+                                <line x1="226" y1="250" x2="234" y2="250" stroke="#333333" stroke-width="2" />
+                                <line x1="266" y1="250" x2="274" y2="250" stroke="#333333" stroke-width="2" />
+                            </g>
+                            <!-- Schnittlingen with background -->
+                            <rect x="215" y="280" width="70" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                            <text x="250" y="292" text-anchor="middle" fill="#333333" font-size="14"
+                                font-weight="600">Schnittlingen</text>
+
+                            <!-- 10km Ring Cities with backgrounds -->
+                            <rect x="220" y="188" width="60" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                            <text x="250" y="200" text-anchor="middle" fill="#333333" font-size="13">Rechberg</text>
+                            <rect x="195" y="308" width="110" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                            <text x="250" y="320" text-anchor="middle" fill="#333333" font-size="13">Bad
+                                Überkingen</text>
+
+                            <!-- 20km Ring Cities with backgrounds and diamonds -->
+                            <!-- Schwäbisch Gmünd -->
+                            <g>
+                                <rect x="140" y="135" width="8" height="8" fill="#D23526"
+                                    transform="rotate(45 144 139)" />
+                                <rect x="150" y="128" width="80" height="32" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                                <text x="155" y="136" fill="#333333" font-size="13">Schwäbisch</text>
+                                <text x="155" y="150" fill="#333333" font-size="13">Gmünd</text>
+                            </g>
+
+                            <!-- Göppingen -->
+                            <g>
+                                <rect x="90" y="246" width="8" height="8" fill="#D23526"
+                                    transform="rotate(45 94 250)" />
+                                <rect x="100" y="243" width="75" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                                <text x="105" y="255" fill="#333333" font-size="13">Göppingen</text>
+                            </g>
+
+                            <!-- Gerstetten -->
+                            <g>
+                                <rect x="390" y="280" width="8" height="8" fill="#D23526"
+                                    transform="rotate(45 394 284)" />
+                                <rect x="315" y="270" width="75" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                                <text x="352" y="282" text-anchor="middle" fill="#333333"
+                                    font-size="13">Gerstetten</text>
+                            </g>
+
+                            <!-- Heidenheim -->
+                            <rect x="315" y="223" width="85" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                            <text x="357" y="235" text-anchor="middle" fill="#333333" font-size="13">Heidenheim</text>
+
+                            <!-- 30km Ring Cities with backgrounds and diamonds -->
+                            <!-- Schorndorf -->
+                            <g>
+                                <rect x="85" y="90" width="8" height="8" fill="#D23526" transform="rotate(45 89 94)" />
+                                <rect x="95" y="84" width="75" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                                <text x="100" y="96" fill="#333333" font-size="13">Schorndorf</text>
+                            </g>
+
+                            <!-- Ebersbach -->
+                            <rect x="45" y="213" width="75" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                            <text x="50" y="225" fill="#333333" font-size="13">Ebersbach</text>
+
+                            <!-- Weilheim / Teck -->
+                            <rect x="65" y="380" width="75" height="32" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                            <text x="70" y="391" fill="#333333" font-size="13">Weilheim /</text>
+                            <text x="70" y="405" fill="#333333" font-size="13">Teck</text>
+
+                            <!-- Aalen -->
+                            <rect x="375" y="118" width="50" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                            <text x="400" y="130" text-anchor="middle" fill="#333333" font-size="13">Aalen</text>
+
+                            <!-- Langenau -->
+                            <rect x="360" y="383" width="70" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                            <text x="395" y="395" text-anchor="middle" fill="#333333" font-size="13">Langenau</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Right Column: Content (60%) -->
+                <div class="regional-content">
+                    <!-- Introductory Text -->
+                    <p class="regional-intro">
+                        Unser Team vereint Erfahrung und frische Ideen: Auszubildende lernen von Gesellen und Meistern,
+                        Ingenieure bringen technisches Know-how ein. Gemeinsam packen wir auch komplexe Projekte an –
+                        mit
+                        Leidenschaft für Holzbau und dem Anspruch, für jeden Kunden das Beste herauszuholen.
+                    </p>
+
+                    <!-- Stats Container -->
+                    <div class="regional-stats-container">
+                        <!-- Stat 1 -->
+                        <div class="experience-stat">
+                            <div class="stat-number">45+</div>
+                            <div class="stat-label-text">Jahre Erfahrung</div>
+                        </div>
+
+                        <!-- Stat 2 -->
+                        <div class="experience-stat">
+                            <div class="stat-number">13</div>
+                            <div class="stat-label-text">Mitarbeiter</div>
+                        </div>
+
+                        <!-- Stat 3 -->
+                        <div class="experience-stat">
+                            <div class="stat-number">> 70</div>
+                            <div class="stat-label-text">Projekte pro Jahr</div>
+                        </div>
+
+                        <!-- Stat 4 -->
+                        <div class="experience-stat">
+                            <div class="stat-number">2.</div>
+                            <div class="stat-label-text">Generation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Geschichte Section -->
+    <section class="history-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Unsere Geschichte</h2>
+                <p class="section-description">
+                    Von der Gründung bis heute – die wichtigsten Meilensteine der Zimmerei Müller im Überblick.
+                </p>
+            </div>
+
+            <div class="timeline-container">
+                <!-- Timeline Items - each year with its description -->
+                <div class="timeline-items-wrapper">
+                    <!-- Item 1: 1978 -->
+                    <div class="timeline-item-mobile">
+                        <div class="chevron">
+                            <span class="chevron-year">1978</span>
+                        </div>
+                        <div class="timeline-card">
+                            <h3 class="timeline-card-title">Gründung durch Otto Müller</h3>
+                            <p class="timeline-card-text">
+                                Otto Müller legt den Grundstein für handwerkliche Tradition und Qualität. Mit
+                                Leidenschaft
+                                für das Zimmererhandwerk beginnt die Geschichte unseres Familienbetriebs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: 1982 -->
+                    <div class="timeline-item-mobile">
+                        <div class="chevron">
+                            <span class="chevron-year">1982</span>
+                        </div>
+                        <div class="timeline-card">
+                            <h3 class="timeline-card-title">Bau der Halle im Kaiser Weg</h3>
+                            <p class="timeline-card-text">
+                                Wachstum braucht Raum: Die neue Werkstatthalle im Kaiser Weg schafft optimale
+                                Bedingungen
+                                für präzise Fertigung und professionelle Abwicklung auch größerer Projekte.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: 2003 -->
+                    <div class="timeline-item-mobile">
+                        <div class="chevron">
+                            <span class="chevron-year">2003</span>
+                        </div>
+                        <div class="timeline-card">
+                            <h3 class="timeline-card-title">Geschäftsübernahme durch Matthias Müller</h3>
+                            <p class="timeline-card-text">
+                                Die zweite Generation übernimmt: Matthias Müller übernimmt von seinem Vater die Zimmerei
+                                führt den Betrieb mit frischen Ideen
+                                und
+                                bewährten Werten in die Zukunft. Tradition trifft Innovation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: 2010 -->
+                    <div class="timeline-item-mobile">
+                        <div class="chevron">
+                            <span class="chevron-year">2010</span>
+                        </div>
+                        <div class="timeline-card">
+                            <h3 class="timeline-card-title">Bau der Lagerhalle</h3>
+                            <p class="timeline-card-text">
+                                Qualität beginnt bei der Lagerung: Die neue Halle schützt Baustoffe und Maschinen vor
+                                Witterung. Nur perfekt gelagertes Material garantiert perfekte Ergebnisse auf der
+                                Baustelle.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: 2013 -->
+                    <div class="timeline-item-mobile">
+                        <div class="chevron">
+                            <span class="chevron-year">2013</span>
+                        </div>
+                        <div class="timeline-card">
+                            <h3 class="timeline-card-title">Erweiterung der Lagerhalle mit Überdachung</h3>
+                            <p class="timeline-card-text">
+                                Um dem steigenden Bedraf an Materiallagerung gerecht zu werden, wurde eine Überdachung
+                                neben der
+                                Lagerhalle errichtet. So können wir auch größere Projekte problemlos realisieren, oder
+                                auf kurzfristige Materialbedarfe reagieren.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: 2023 -->
+                    <div class="timeline-item-mobile">
+                        <div class="chevron">
+                            <span class="chevron-year">2023</span>
+                        </div>
+                        <div class="timeline-card">
+                            <h3 class="timeline-card-title">Gründung der Holzbau-Zimmerei Müller GmbH</h3>
+                            <p class="timeline-card-text">
+                                Zukunft gestalten, Tradition bewahren: Mit der Gründung der Holzbau-Zimmerei Müller GmbH
+                                und Daniel Gold als weiterem Geschäftsführer stellen wir die Weichen für weiteres
+                                Wachstum
+                                und neue Möglichkeiten.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="section-container">
+            <div class="team-intro">
+                <h2 class="section-title">Unser Team</h2>
+                <p class="section-description">
+                    Gemeinsam setzen wir auf Qualität, Leidenschaft und jahrelange Erfahrung im Holzbau.
+                </p>
+            </div>
+
+            <!-- Main Team Photo Placeholder -->
+            <div class="team-main-photo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Team-Foto Platzhalter</span>
+            </div>
+
+            <!-- Leadership -->
+            <div class="leadership-section">
+                <h3 class="leadership-title">Unsere Geschäftsführung</h3>
+                <div class="leadership-grid">
+                    <!-- Leader 1 -->
+                    <div class="leader-card">
+                        <div class="leader-photo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <span style="font-size: 13px;">Foto Platzhalter</span>
+                        </div>
+                        <div class="leader-info">
+                            <h4 class="leader-name">Matthias Müller</h4>
+                            <p class="leader-title">Zimmerer Meister</p>
+                        </div>
+                    </div>
+
+                    <!-- Leader 2 -->
+                    <div class="leader-card">
+                        <div class="leader-photo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <span style="font-size: 13px;">Foto Platzhalter</span>
+                        </div>
+                        <div class="leader-info">
+                            <h4 class="leader-name">Daniel Gold</h4>
+                            <p class="leader-title">Bachelor of Engineering</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                © 2026 Holzbau-Zimmerei Müller GmbH. Alle Rechte vorbehalten.
+            </div>
+            <div class="footer-links">
+                <a href="impressum.html" class="footer-link">Impressum</a>
+                <a href="datenschutz.html" class="footer-link">Datenschutz</a>
+                <a href="agb.html" class="footer-link">AGB</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileDropdownToggle = document.getElementById('mobileDropdownToggle');
+        const mobileDropdownMenu = document.getElementById('mobileDropdownMenu');
+
+        hamburger.addEventListener('click', function () {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Mobile dropdown toggle
+        if (mobileDropdownToggle) {
+            mobileDropdownToggle.addEventListener('click', function () {
+                mobileDropdownToggle.classList.toggle('active');
+                mobileDropdownMenu.classList.toggle('active');
+            });
+        }
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            if (mobileDropdownToggle) {
+                mobileDropdownToggle.classList.remove('active');
+                mobileDropdownMenu.classList.remove('active');
+            }
+        }
+
+        // Close menu on resize to desktop
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+
+</html>

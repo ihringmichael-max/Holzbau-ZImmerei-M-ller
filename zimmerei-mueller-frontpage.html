@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
+                   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+                   font-src 'self' https://fonts.gstatic.com; 
+                   img-src 'self' data: https:; 
+                   script-src 'self' 'unsafe-inline';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zimmerei Müller | Holzbau aus Schnittlingen</title>
+    <meta name="description"
+        content="Zimmerei Müller – Ihr Partner für Massivholzhäuser, Neubau und Dachsanierung in der Region. Nachhaltig. Zuverlässig. Nichts ist unmöglich.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Markenfarben aus Logo */
+            --brand-red: #B32D24;
+            --brand-red-dark: #8B241D;
+            --brand-yellow: #F9D800;
+            --brand-yellow-light: #FFE53B;
+
+            /* Design-System */
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E5E5;
+            --gray-300: #D4D4D4;
+            --gray-500: #737373;
+            --gray-700: #404040;
+            --gray-900: #171717;
+
+            /* Abstände */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+
+            /* Typografie */
+            --font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--white);
+            color: var(--gray-900);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* ===================== NAVIGATION ===================== */
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+            color: var(--gray-900);
+            transition: all 0.2s;
+        }
+
+        .nav-logo:hover {
+            transform: translateY(-2px);
+            filter: drop-shadow(0 6px 16px rgba(210, 53, 38, 0.3));
+        }
+
+        .nav-logo-img {
+            height: 54px;
+            width: auto;
+            border-radius: 4px;
+        }
+
+        /* Hamburger Menu Button */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            gap: 5px;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--gray-700);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--white);
+            z-index: 99;
+            padding: var(--space-lg);
+            flex-direction: column;
+            gap: var(--space-md);
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--gray-900);
+            font-size: 18px;
+            font-weight: 600;
+            padding: var(--space-md);
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--gray-100);
+        }
+
+        .mobile-menu .nav-cta {
+            background: var(--brand-red);
+            color: var(--white);
+            text-align: center;
+            margin-top: var(--space-md);
+        }
+
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-logo-name {
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+            color: var(--gray-900);
+        }
+
+        .nav-logo-sub {
+            font-size: 12px;
+            color: var(--gray-500);
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--brand-red);
+        }
+
+        /* ===================== DROPDOWN MENU ===================== */
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .dropdown-icon {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.2s;
+        }
+
+        .nav-dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            min-width: 200px;
+            padding: var(--space-xs) 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+            z-index: 1000;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--gray-700);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-dropdown-menu a:hover {
+            background: var(--gray-50);
+            color: var(--brand-red);
+            padding-left: 24px;
+        }
+
+        /* Mobile Dropdown */
+        .mobile-dropdown {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-dropdown-toggle {
+            text-decoration: none;
+            color: var(--gray-900);
+            font-size: 18px;
+            font-weight: 600;
+            padding: var(--space-md);
+            border-radius: 8px;
+            transition: background 0.2s;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mobile-dropdown-toggle::after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.2s;
+        }
+
+        .mobile-dropdown-toggle.active::after {
+            transform: rotate(180deg);
+        }
+
+        .mobile-dropdown-toggle:hover {
+            background: var(--gray-100);
+        }
+
+        .mobile-dropdown-menu {
+            display: none;
+            flex-direction: column;
+            padding-left: var(--space-md);
+            gap: 4px;
+        }
+
+        .mobile-dropdown-menu.active {
+            display: flex;
+        }
+
+        .mobile-dropdown-menu a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px var(--space-md);
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            background: var(--gray-100);
+            color: var(--brand-red);
+        }
+
+        .nav-cta {
+            padding: 10px 20px;
+            background: #D23526;
+            color: #FAE439;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: all 0.2s;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000, 1px 0 0 #000;
+        }
+
+        .nav-cta:hover {
+            background: var(--brand-red-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(210, 53, 38, 0.3);
+        }
+
+        /* ===================== HERO (Neues Layout) ===================== */
+
+        /* ===================== HERO (Neues Layout) ===================== */
+
+        .hero {
+            padding: calc(72px + var(--space-2xl)) var(--space-lg) var(--space-sm);
+            background: var(--white);
+            text-align: left;
+            /* Clear Line: Left aligned */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Watermark Logo */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: calc(72px + var(--space-2xl) + 2rem);
+            right: max(var(--space-lg), calc(50% - 600px));
+            /* Bündig mit dem rechten Rand der Service-Kacheln (max 1200px) */
+            transform: none;
+            width: 35%;
+            max-width: 400px;
+            height: auto;
+            aspect-ratio: 2/1;
+            background-image: url('Pictures/Müller_Logo nur Holzbau WEISS.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center right;
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Kicker / Tagline - jetzt oben und seriöser */
+        .hero-tagline {
+            display: inline-block;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            background: none;
+            padding: 0;
+            border: none;
+        }
+
+        .hero-headline {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            /* Größer und emotionaler */
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: var(--gray-900);
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-headline span {
+            color: var(--brand-red);
+        }
+
+        .hero-subline {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 0 var(--space-lg) 0;
+            font-weight: 400;
+        }
+
+        .hero-ctas {
+            display: flex;
+            justify-content: flex-start;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+        }
+
+        /* Button Colors defined by User Rule */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 16px 32px;
+            background: #D23526;
+            /* Fixed Brand Red */
+            color: #FAE439;
+            /* Fixed Brand Yellow Text */
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(210, 53, 38, 0.2);
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000, 1px 0 0 #000;
+        }
+
+        .btn-primary:hover {
+            background: #b82b1e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(210, 53, 38, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 14px 28px;
+            background: #D23526;
+            color: #FAE439;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 8px;
+            border: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000, 1px 0 0 #000;
+        }
+
+        .btn-secondary:hover {
+            background: #b82b1e;
+            transform: translateY(-1px);
+        }
+
+        /* ===================== LEISTUNGEN (Direkt unter Hero) ===================== */
+
+        .services-section {
+            padding: var(--space-xl) var(--space-lg) var(--space-3xl);
+            background: var(--white);
+            scroll-margin-top: 100px;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+
+        /* Einheitliche Kacheln mit Marken-Schatten */
+        .service-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            border: none;
+            box-shadow: 0 2px 8px rgba(179, 45, 36, 0.12), 0 0 0 1px rgba(179, 45, 36, 0.08);
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: var(--space-sm);
+            min-height: 160px;
+            justify-content: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(179, 45, 36, 0.18), 0 0 0 2px rgba(179, 45, 36, 0.15);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gray-100);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .service-name {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--gray-900);
+        }
+
+        /* Kachel mit Hintergrundbild */
+        .service-card.has-image {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card.has-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.55) 100%);
+            z-index: 1;
+        }
+
+        .service-card.has-image .service-icon,
+        .service-card.has-image .service-name {
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card.has-image .service-icon {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px);
+        }
+
+        .service-card.has-image .service-name {
+            color: var(--white);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            font-size: 1.1rem;
+        }
+
+        /* ===================== PROBLEM → LÖSUNG ===================== */
+
+        .problem-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--gray-50);
+        }
+
+        .problem-heading {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+
+        .problem-heading span {
+            color: var(--brand-red);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: start;
+        }
+
+        .problem-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .problem-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .problem-item {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: flex-start;
+        }
+
+        .problem-icon {
+            width: 24px;
+            height: 24px;
+            background: transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: var(--brand-red);
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .problem-text {
+            color: var(--gray-700);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Solution card styles removed as requested by user */
+        /* ===================== REFERENZEN ===================== */
+
+        .references-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .section-label {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-900);
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--gray-900);
+        }
+
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+
+        .reference-card {
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--gray-100);
+            aspect-ratio: 4/3;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .reference-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(210, 53, 38, 0.15);
+        }
+
+        .reference-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-400);
+            gap: var(--space-xs);
+        }
+
+        .reference-placeholder svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .reference-placeholder span {
+            font-size: 13px;
+        }
+
+        .reference-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: var(--space-md);
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+            color: var(--white);
+        }
+
+        .reference-title {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .reference-location {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .references-cta {
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+
+        /* ===================== ÜBER UNS ===================== */
+
+        .about-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--gray-50);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+        }
+
+        .about-visual {
+            aspect-ratio: 1;
+            background: var(--gray-200);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+
+        .about-content p {
+            color: var(--gray-600);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: var(--space-lg);
+        }
+
+        .about-stats {
+            display: flex;
+            gap: var(--space-xl);
+            align-items: flex-start;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-radius {
+            align-items: center;
+        }
+
+        .radius-diagram {
+            margin-bottom: var(--space-sm);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--brand-red);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--gray-500);
+            margin-top: 4px;
+        }
+
+        /* Centered layout styles for about section */
+        .about-heading-centered {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .text-brand-red {
+            color: var(--brand-red);
+        }
+
+        .about-content-centered {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .about-intro-text {
+            font-size: 1.125rem;
+            line-height: 1.5;
+            color: var(--gray-600);
+            margin-bottom: var(--space-lg);
+        }
+
+        .about-experience-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+
+        .about-stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--brand-red);
+            line-height: 1;
+        }
+
+        .about-stat-label-text {
+            font-size: 1rem;
+            color: var(--gray-500);
+            font-weight: 500;
+            margin-top: var(--space-xs);
+        }
+
+        .about-radius-map {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* ===================== FINAL CTA ===================== */
+
+        .cta-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: linear-gradient(to bottom, var(--white) 0%, var(--gray-100) 100%);
+            color: var(--gray-900);
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: var(--space-3xl);
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .cta-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(179, 45, 36, 0.18), 0 0 0 2px rgba(179, 45, 36, 0.15);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--gray-900);
+            margin-bottom: var(--space-md);
+        }
+
+        .cta-section p {
+            font-size: 1.125rem;
+            color: var(--gray-700);
+            margin-bottom: var(--space-xl);
+        }
+
+        .cta-section .btn-primary {
+            background: #D23526;
+            color: #FAE439;
+            font-weight: bold;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000, 1px 0 0 #000;
+        }
+
+        .cta-section .btn-primary:hover {
+            background: #B32D24;
+            box-shadow: 0 6px 16px rgba(210, 53, 38, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Kontakt-Buttons nebeneinander */
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--space-lg);
+        }
+
+        .btn-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.2s;
+            background: #D23526;
+            color: #FAE439;
+            text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.6), 1px -1px 0 rgba(0, 0, 0, 0.6), -1px 1px 0 rgba(0, 0, 0, 0.6), 1px 1px 0 rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(0, 0, 0, 0.6), 0 1px 0 rgba(0, 0, 0, 0.6), -1px 0 0 rgba(0, 0, 0, 0.6), 1px 0 0 rgba(0, 0, 0, 0.6);
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .btn-contact:hover {
+            background: #B32D24;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(210, 53, 38, 0.35);
+        }
+
+        .btn-contact svg {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+        }
+
+        @media (max-width: 480px) {
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-contact {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        .cta-location {
+            margin-top: var(--space-lg);
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+
+        .cta-location strong {
+            color: var(--gray-900);
+        }
+
+        /* ===================== GOOGLE BEWERTUNGEN ===================== */
+
+        .reviews-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: var(--white);
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .reviews-overall {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .reviews-overall-score {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            line-height: 1;
+        }
+
+        .reviews-overall-detail {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .reviews-stars-row {
+            display: flex;
+            gap: 3px;
+        }
+
+        .reviews-stars-row svg {
+            width: 22px;
+            height: 22px;
+            fill: #F59E0B;
+        }
+
+        .reviews-count {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        .reviews-google-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.875rem;
+            color: var(--brand-red);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: var(--space-sm);
+            transition: color 0.2s;
+        }
+
+        .reviews-google-link:hover {
+            color: var(--brand-red-dark);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--gray-50);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--brand-red), #E8512D);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #FAE439;
+            flex-shrink: 0;
+        }
+
+        .review-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .review-name {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .review-date {
+            font-size: 0.8125rem;
+            color: var(--gray-500);
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .review-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: #F59E0B;
+        }
+
+        .review-text {
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            line-height: 1.65;
+            flex: 1;
+        }
+
+        .review-google-badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: auto;
+            padding-top: var(--space-sm);
+            border-top: 1px solid var(--gray-100);
+            font-size: 0.78rem;
+            color: var(--gray-400);
+            font-weight: 500;
+        }
+
+        @media (max-width: 1024px) {
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===================== FOOTER ===================== */
+
+        .footer {
+            padding: var(--space-xl) var(--space-lg);
+            background: #D23526;
+            color: #FAE439;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-lg);
+        }
+
+        .footer-link {
+            font-size: 14px;
+            color: #FAE439;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+
+        @media (max-width: 1024px) {
+            .hero::before {
+                right: var(--space-lg);
+                /* Auf iPad näher an den Rand rücken */
+                width: 45%;
+                /* Etwas größer für bessere Präsenz */
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .problem-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+
+            .references-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: calc(72px + var(--space-xl)) var(--space-md) var(--space-md);
+            }
+
+            .hero::before {
+                top: calc(72px + var(--space-2xl) + 1.5rem);
+                /* Weiter hoch, auf Höhe von 'Haltung' */
+                bottom: auto;
+                right: -15%;
+                /* Mehr abgeschnitten am rechten Rand */
+                width: 80%;
+                /* Logo proportional verkleinern, aber durch den offset wirkt es besser */
+                opacity: 0.12;
+                /* Sehr dezent halten */
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .references-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="Pictures/Müller_Logo nur Holzbau ROT.png" alt="Holzbau-Zimmerei Müller" class="nav-logo-img">
+            </a>
+            <div class="nav-links">
+                <div class="nav-dropdown">
+                    <a href="#leistungen" class="nav-link nav-dropdown-toggle">
+                        Leistungen
+                        <svg class="dropdown-icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="massivholzhaus.html">Massivholzhaus</a>
+                        <a href="neubau.html">Neubau</a>
+                        <a href="dachsanierung.html">Dachsanierung</a>
+                        <a href="holzrahmenbau.html">Holzrahmenbau</a>
+                        <a href="dachfenster.html">Dachfenster</a>
+                        <a href="aufstockungen.html">Aufstockungen</a>
+                        <a href="dachgauben.html">Dachgauben</a>
+                        <a href="treppenbau.html">Treppenbau</a>
+                        <a href="asbestsanierung.html">Asbestsanierung</a>
+                    </div>
+                </div>
+                <a href="referenzen.html" class="nav-link">Referenzen</a>
+                <a href="ueber-uns.html" class="nav-link">Über uns</a>
+                <a href="#kontakt" class="nav-cta">Kontakt aufnehmen</a>
+            </div>
+            <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-dropdown">
+            <button class="mobile-dropdown-toggle" id="mobileDropdownToggle">Leistungen</button>
+            <div class="mobile-dropdown-menu" id="mobileDropdownMenu">
+                <a href="massivholzhaus.html" onclick="closeMenu()">Massivholzhaus</a>
+                <a href="neubau.html" onclick="closeMenu()">Neubau</a>
+                <a href="dachsanierung.html" onclick="closeMenu()">Dachsanierung</a>
+                <a href="holzrahmenbau.html" onclick="closeMenu()">Holzrahmenbau</a>
+                <a href="dachfenster.html" onclick="closeMenu()">Dachfenster</a>
+                <a href="aufstockungen.html" onclick="closeMenu()">Aufstockungen</a>
+                <a href="dachgauben.html" onclick="closeMenu()">Dachgauben</a>
+                <a href="treppenbau.html" onclick="closeMenu()">Treppenbau</a>
+                <a href="asbestsanierung.html" onclick="closeMenu()">Asbestsanierung</a>
+            </div>
+        </div>
+        <a href="referenzen.html" onclick="closeMenu()">Referenzen</a>
+        <a href="ueber-uns.html" onclick="closeMenu()">Über uns</a>
+        <a href="#kontakt" class="nav-cta" onclick="closeMenu()">Kontakt aufnehmen</a>
+    </div>
+
+    <!-- Hero Section (Zentriert, ohne Bild) -->
+    <section class="hero">
+        <div class="hero-container">
+            <p class="hero-tagline">
+                Ihre Zimmerei aus Schnittlingen
+            </p>
+            <h1 class="hero-headline">
+                Holzbau mit <span>Stolz</span>
+            </h1>
+            <p class="hero-subline">
+                Wo andere aufhören, fangen wir an. Wir bauen mit regionalem Holz, echter Leidenschaft und einer
+                Qualität, die bleibt.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- Leistungen (Direkt unter Hero) -->
+    <section class="services-section" id="leistungen">
+        <div class="section-container">
+            <div class="services-grid">
+                <a href="massivholzhaus.html" class="service-card has-image"
+                    style="background-image: url('Pictures/Bsp-SORA1.png');">
+                    <span class="service-name">Massivholzhaus</span>
+                </a>
+                <a href="neubau.html" class="service-card has-image"
+                    style="background-image: url('Pictures/Neubau_Dachstuhl.png');">
+                    <span class="service-name">Neubau</span>
+                </a>
+                <a href="dachsanierung.html" class="service-card has-image"
+                    style="background-image: url('Pictures/Dachsanierung.png');">
+                    <span class="service-name">Dachsanierung</span>
+                </a>
+                <a href="holzrahmenbau.html" class="service-card has-image"
+                    style="background-image: url('Pictures/Holzrahmenbau.png');">
+                    <span class="service-name">Holzrahmenbau</span>
+                </a>
+                <a href="dachfenster.html" class="service-card has-image"
+                    style="background-image: url('Pictures/Dachfenster-mit-Hund.png');">
+                    <span class="service-name">Dachfenster</span>
+                </a>
+                <a href="aufstockungen.html" class="service-card has-image"
+                    style="background-image: url('Pictures/Aufstockung-neu-modifiziert.png');">
+                    <span class="service-name">Aufstockungen</span>
+                </a>
+                <a href="dachgauben.html" class="service-card has-image"
+                    style="background-image: url('Pictures/Schleppdachgaube.png');">
+                    <span class="service-name">Dachgauben</span>
+                </a>
+                <a href="treppenbau.html" class="service-card has-image"
+                    style="background-image: url('Pictures/Holztreppe.png');">
+                    <span class="service-name">Treppenbau</span>
+                </a>
+                <a href="asbestsanierung.html" class="service-card has-image"
+                    style="background-image: url('Pictures/Asbestsanierung-2.png');">
+                    <span class="service-name">Asbestsanierung</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem → Lösung -->
+    <section class="problem-section">
+        <div class="section-container">
+            <h2 class="problem-heading">
+                Ihr Bauprojekt verdient <span>einen Partner, der liefert.</span>
+            </h2>
+            <div class="problem-grid">
+                <div class="problem-column">
+                    <ul class="problem-list">
+                        <li class="problem-item">
+                            <span class="problem-icon">✓</span>
+                            <span class="problem-text"><strong>Einsatz, auch wenn's anstrengend wird</strong><br>
+                                Aufstockungen in engen Innenstädten, komplexe Dachkonstruktionen mit Zeitdruck – wir
+                                packen an, bis es steht. Ohne Wenn und Aber.</span>
+                        </li>
+                        <li class="problem-item">
+                            <span class="problem-icon">✓</span>
+                            <span class="problem-text"><strong>Wir arbeiten auch bei schlechtem Wetter</strong><br>
+                                Natürlich nur, wo es technisch vertretbar ist. Aber während andere die Baustelle ruhen
+                                lassen, suchen wir Wege, weiterzukommen – wetterfeste Vorfertigung, geschützte Montage,
+                                flexible Arbeitsabläufe.</span>
+                        </li>
+                        <li class="problem-item">
+                            <span class="problem-icon">✓</span>
+                            <span class="problem-text"><strong>Herausforderungen? Nehmen wir an.</strong><br>
+                                Knifflige Statik, enge Zufahrten oder andere Herausforderungen – wo es kompliziert wird,
+                                werden wir erst richtig aktiv. Lösungen finden statt Probleme suchen ist unser
+                                Ding.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="problem-column">
+                    <ul class="problem-list">
+                        <li class="problem-item">
+                            <span class="problem-icon">✓</span>
+                            <span class="problem-text"><strong>Termintreue steht ganz oben</strong><br>
+                                Wir planen realistisch und halten, was wir zusagen. Verschiebungen kommunizieren wir
+                                frühzeitig – Transparenz gehört für uns zum professionellen Handwerk.</span>
+                        </li>
+                        <li class="problem-item">
+                            <span class="problem-icon">✓</span>
+                            <span class="problem-text"><strong>Ein Ansprechpartner von Anfang bis Ende</strong><br>
+                                Kein Ping-Pong zwischen Büro und Baustelle. Sie haben eine feste Kontaktperson, die Ihr
+                                Projekt kennt, mitdenkt und erreichbar ist.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Referenzen -->
+    <section class="references-section" id="referenzen">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Projekte, <span class="text-brand-red">die für sich sprechen</span></h2>
+            </div>
+
+            <div class="references-grid">
+                <div class="reference-card">
+                    <div class="reference-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <path d="M21 15l-5-5L5 21" />
+                        </svg>
+                        <span>Projektbild</span>
+                    </div>
+                    <div class="reference-overlay">
+                        <span class="reference-title">Referenz 1</span>
+                        <span class="reference-location">Folgt in Kürze</span>
+                    </div>
+                </div>
+                <div class="reference-card">
+                    <div class="reference-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <path d="M21 15l-5-5L5 21" />
+                        </svg>
+                        <span>Projektbild</span>
+                    </div>
+                    <div class="reference-overlay">
+                        <span class="reference-title">Referenz 2</span>
+                        <span class="reference-location">Folgt in Kürze</span>
+                    </div>
+                </div>
+                <div class="reference-card">
+                    <div class="reference-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <path d="M21 15l-5-5L5 21" />
+                        </svg>
+                        <span>Projektbild</span>
+                    </div>
+                    <div class="reference-overlay">
+                        <span class="reference-title">Referenz 3</span>
+                        <span class="reference-location">Folgt in Kürze</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: var(--space-xl) 0; padding: 0 var(--space-lg);">
+                <p
+                    style="font-size: 1.125rem; color: var(--gray-600); line-height: 1.7; max-width: 600px; margin: 0 auto;">
+                    Wir arbeiten gerade daran, Ihnen unsere besten Projekte zu präsentieren.
+                    Bald können Sie hier sehen, wie wir Holzbau mit Haltung in die Tat umsetzen.
+                </p>
+            </div>
+
+            <div class="references-cta">
+                <a href="referenzen.html" class="btn-secondary">Alle Referenzen ansehen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Über uns / Handwerk mit Stolz Section -->
+    <section class="about-section" id="handwerk-mit-stolz">
+        <div class="section-container">
+            <!-- Centered Heading with Red Accent -->
+            <h2 class="about-heading-centered">
+                Handwerk mit Stolz. <span class="text-brand-red">Regional verwurzelt.</span>
+            </h2>
+
+            <!-- Single Column Centered Content -->
+            <div class="about-content-centered">
+                <!-- Introductory Text -->
+                <p class="about-intro-text">
+                    Unser Team vereint Erfahrung und frische Ideen: Auszubildende lernen von Gesellen und Meistern,
+                    Ingenieure bringen technisches Know-how ein. Gemeinsam packen wir auch komplexe Projekte an –
+                    mit Leidenschaft für Holzbau und dem Anspruch, für jeden Kunden das Beste herauszuholen.
+                </p>
+
+                <!-- Experience Stat -->
+                <div class="about-experience-stat">
+                    <div class="about-stat-number">Seit 1978</div>
+                    <div class="about-stat-label-text">Handwerkliche Tradition</div>
+                </div>
+
+                <!-- Radius Map -->
+                <div class="about-radius-map">
+                    <svg viewBox="0 0 500 500" style="width: 100%; max-width: 450px; height: auto;">
+                        <!-- Outer circle - 30km -->
+                        <circle cx="250" cy="250" r="220" fill="none" stroke="rgba(210, 53, 38, 0.5)"
+                            stroke-width="2" />
+                        <text x="250" y="45" text-anchor="middle" fill="#D94A3D" font-size="14" font-weight="500">30
+                            km</text>
+
+                        <!-- Middle circle - 20km -->
+                        <circle cx="250" cy="250" r="176" fill="none" stroke="rgba(210, 53, 38, 0.5)"
+                            stroke-width="2" />
+                        <text x="250" y="89" text-anchor="middle" fill="#D94A3D" font-size="14" font-weight="500">20
+                            km</text>
+
+                        <!-- Inner circle - 10km -->
+                        <circle cx="250" cy="250" r="88" fill="none" stroke="rgba(210, 53, 38, 0.5)" stroke-width="2" />
+                        <text x="250" y="177" text-anchor="middle" fill="#D94A3D" font-size="14" font-weight="500">10
+                            km</text>
+
+                        <!-- Center - Schnittlingen with crosshair -->
+                        <g>
+                            <!-- Crosshair circles -->
+                            <circle cx="250" cy="250" r="20" fill="none" stroke="#333333" stroke-width="2" />
+                            <circle cx="250" cy="250" r="12" fill="none" stroke="#333333" stroke-width="2" />
+                            <circle cx="250" cy="250" r="4" fill="#333333" />
+                            <!-- Crosshair lines -->
+                            <line x1="250" y1="226" x2="250" y2="234" stroke="#333333" stroke-width="2" />
+                            <line x1="250" y1="266" x2="250" y2="274" stroke="#333333" stroke-width="2" />
+                            <line x1="226" y1="250" x2="234" y2="250" stroke="#333333" stroke-width="2" />
+                            <line x1="266" y1="250" x2="274" y2="250" stroke="#333333" stroke-width="2" />
+                        </g>
+                        <!-- Schnittlingen with background -->
+                        <rect x="215" y="280" width="70" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                        <text x="250" y="292" text-anchor="middle" fill="#333333" font-size="14"
+                            font-weight="600">Schnittlingen</text>
+
+                        <!-- 10km Ring Cities with backgrounds -->
+                        <rect x="220" y="188" width="60" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                        <text x="250" y="200" text-anchor="middle" fill="#333333" font-size="13">Rechberg</text>
+                        <rect x="195" y="308" width="110" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                        <text x="250" y="320" text-anchor="middle" fill="#333333" font-size="13">Bad Überkingen</text>
+
+                        <!-- 20km Ring Cities with backgrounds and diamonds -->
+                        <!-- Schwäbisch Gmünd -->
+                        <g>
+                            <rect x="140" y="135" width="8" height="8" fill="#D23526" transform="rotate(45 144 139)" />
+                            <rect x="150" y="128" width="80" height="32" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                            <text x="155" y="136" fill="#333333" font-size="13">Schwäbisch</text>
+                            <text x="155" y="150" fill="#333333" font-size="13">Gmünd</text>
+                        </g>
+
+                        <!-- Göppingen -->
+                        <g>
+                            <rect x="90" y="246" width="8" height="8" fill="#D23526" transform="rotate(45 94 250)" />
+                            <rect x="100" y="243" width="75" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                            <text x="105" y="255" fill="#333333" font-size="13">Göppingen</text>
+                        </g>
+
+                        <!-- Gerstetten -->
+                        <g>
+                            <rect x="390" y="280" width="8" height="8" fill="#D23526" transform="rotate(45 394 284)" />
+                            <rect x="315" y="270" width="75" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                            <text x="352" y="282" text-anchor="middle" fill="#333333" font-size="13">Gerstetten</text>
+                        </g>
+
+                        <!-- Heidenheim -->
+                        <rect x="315" y="223" width="85" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                        <text x="357" y="235" text-anchor="middle" fill="#333333" font-size="13">Heidenheim</text>
+
+                        <!-- 30km Ring Cities with backgrounds and diamonds -->
+                        <!-- Schorndorf -->
+                        <g>
+                            <rect x="85" y="90" width="8" height="8" fill="#D23526" transform="rotate(45 89 94)" />
+                            <rect x="95" y="84" width="75" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                            <text x="100" y="96" fill="#333333" font-size="13">Schorndorf</text>
+                        </g>
+
+                        <!-- Ebersbach -->
+                        <rect x="45" y="213" width="75" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                        <text x="50" y="225" fill="#333333" font-size="13">Ebersbach</text>
+
+                        <!-- Weilheim / Teck -->
+                        <rect x="65" y="380" width="75" height="32" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                        <text x="70" y="391" fill="#333333" font-size="13">Weilheim /</text>
+                        <text x="70" y="405" fill="#333333" font-size="13">Teck</text>
+
+                        <!-- Aalen -->
+                        <rect x="375" y="118" width="50" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                        <text x="400" y="130" text-anchor="middle" fill="#333333" font-size="13">Aalen</text>
+
+                        <!-- Langenau -->
+                        <rect x="360" y="383" width="70" height="18" fill="rgba(255, 255, 255, 0.9)" rx="3" />
+                        <text x="395" y="395" text-anchor="middle" fill="#333333" font-size="13">Langenau</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div style="margin-top: var(--space-lg); text-align: center;">
+                <a href="ueber-uns.html" class="btn-primary">Mehr über uns erfahren</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Bewertungen -->
+    <section class="reviews-section" id="bewertungen">
+        <div class="section-container">
+            <!-- Header -->
+            <div class="reviews-header">
+                <h2 class="section-title">Was unsere Kunden sagen</h2>
+                <div class="reviews-overall">
+                    <span class="reviews-overall-score">4,8</span>
+                    <div class="reviews-overall-detail">
+                        <div class="reviews-stars-row">
+                            <!-- 5 ausgefüllte Sterne -->
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                        </div>
+                        <span class="reviews-count">12 Bewertungen auf Google</span>
+                    </div>
+                </div>
+                <a href="https://www.google.com/maps/search/Holzbau-Zimmerei+M%C3%BCller+GmbH+B%C3%B6hmenkirch"
+                    target="_blank" rel="noopener" class="reviews-google-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                    Alle Bewertungen auf Google ansehen
+                </a>
+            </div>
+
+            <!-- Bewertungskarten (6 Stück) -->
+            <div class="reviews-grid">
+
+                <!-- Bewertung 1: Sascha Modes -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">S</div>
+                        <div class="review-meta">
+                            <span class="review-name">Sascha Modes</span>
+                            <span class="review-date">vor 2 Monaten</span>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                    </div>
+                    <p class="review-text">„Wir haben unser neues Haus mit der Zimmerei Müller gebaut. Sie haben immer
+                        hervorragende Arbeit geleistet. Das Obergeschoss, sowie die Dacharbeiten wurden zuverlässig von
+                        Ihnen umgesetzt. Die Arbeiten erfolgen verantwortungsvoll und die Arbeiter kamen immer
+                        pünktlich. Auf unsere individuelle Wünsche ist man immer eingegangen. Von uns sehr zu empfehlen,
+                        würde Ihnen immer wieder einen Auftrag geben.“</p>
+                    <div class="review-google-badge">Bewertung über Google</div>
+                </div>
+
+                <!-- Bewertung 2: Carmen Reichert -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">C</div>
+                        <div class="review-meta">
+                            <span class="review-name">Carmen Reichert</span>
+                            <span class="review-date">vor einem Jahr</span>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                    </div>
+                    <p class="review-text">„Wir haben unser Dach energetisch sanieren, Dachfenster ersetzen, die Fassade
+                        und eine Gaube verkleiden und eine PV-Anlage montieren lassen. Die Arbeiter waren sehr engagiert
+                        und es herrschte immer eine super Stimmung auf der Baustelle. Das Preis-Leistungs-Verhältnis war
+                        top. Wir waren durchweg zufrieden mit dem Service und würden uns jederzeit wieder für die Firma
+                        entscheiden!“</p>
+                    <div class="review-google-badge">Bewertung über Google</div>
+                </div>
+
+                <!-- Bewertung 3: Ramazan Varol -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">R</div>
+                        <div class="review-meta">
+                            <span class="review-name">Ramazan Varol</span>
+                            <span class="review-date">vor einem Jahr</span>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                    </div>
+                    <p class="review-text">„Durch und durch ein eingespieltes Team aus „Fachleuten“. Für individuelle
+                        Wünsche hat die Geschäftsleitung stets ein Ohr gehabt und nichts schien unmöglich. Wir bedanken
+                        uns herzlich für unser Dach und für die sehr angenehme Zusammenarbeit. Unfassbar wie schnell das
+                        Dach fertig war – und Preis-Leistung passt allemal.“</p>
+                    <div class="review-google-badge">Bewertung über Google</div>
+                </div>
+
+                <!-- Bewertung 4: Andreas -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">A</div>
+                        <div class="review-meta">
+                            <span class="review-name">Andreas</span>
+                            <span class="review-date">vor 5 Monaten</span>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                    </div>
+                    <p class="review-text">„Von Planung bis zum Abschluss war der Ausbau unseres Dachgeschosses eine
+                        runde Sache. Der Ausbau erfolgte innerhalb weniger Wochen. Das Team arbeitet Hand in Hand in
+                        guter Atmosphäre. Die Arbeiten wurden anstandslos durchgeführt.“</p>
+                    <div class="review-google-badge">Bewertung über Google</div>
+                </div>
+
+                <!-- Bewertung 5: Marcel -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">M</div>
+                        <div class="review-meta">
+                            <span class="review-name">Marcel</span>
+                            <span class="review-date">vor einem Jahr</span>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                    </div>
+                    <p class="review-text">„Super Firma! Kommunikation, Planung, Ausführung – alles vom Feinsten. Alle
+                        Extra-Wünsche werden ohne Probleme umgesetzt. Bei Fragen oder Problemen hat sich die
+                        Geschäftsführung immer Zeit genommen und ausführlich erklärt. Gerne bei der nächsten
+                        Dachsanierung wieder!“</p>
+                    <div class="review-google-badge">Bewertung über Google</div>
+                </div>
+
+                <!-- Bewertung 6: Michael Ihring -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">M</div>
+                        <div class="review-meta">
+                            <span class="review-name">Michael Ihring</span>
+                            <span class="review-date">vor 3 Jahren</span>
+                        </div>
+                    </div>
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                    </div>
+                    <p class="review-text">„Sehr gute Beratung mit Einbringung von Ideen zu Alternativen. Saubere
+                        Umsetzung bei Dachsanierung, PV-Anlagen Montage und Fassadenverkleidung. Durchweg zufrieden!!!“
+                    </p>
+                    <div class="review-google-badge">Bewertung über Google</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="cta-section" id="kontakt">
+        <div class="cta-container">
+            <h2>Projekt besprechen?</h2>
+            <p>
+                Ob Neubau, Sanierung oder eine Idee, die noch Form braucht – wir hören zu und finden Lösungen.
+            </p>
+            <div class="cta-buttons">
+                <!-- Telefon-Button -->
+                <a href="tel:+4973325272" class="btn-contact">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.36 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.47 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16.92z">
+                        </path>
+                    </svg>
+                    07332 / 5272
+                </a>
+                <!-- E-Mail-Button -->
+                <a href="mailto:info@mueller-holzhaus.com" class="btn-contact">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                    E-Mail schreiben
+                </a>
+            </div>
+            <p class="cta-location">
+                <strong>Holzbau Zimmerei Müller GmbH</strong><br>
+                Kaiserweg 21 | 89558 Böhmenkirch - Schnittlingen
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                © 2026 Holzbau-Zimmerei Müller GmbH · Schnittlingen
+            </div>
+            <div class="footer-links">
+                <a href="impressum.html" class="footer-link">Impressum</a>
+                <a href="datenschutz.html" class="footer-link">Datenschutz</a>
+                <a href="agb.html" class="footer-link">AGB</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileDropdownToggle = document.getElementById('mobileDropdownToggle');
+        const mobileDropdownMenu = document.getElementById('mobileDropdownMenu');
+
+        hamburger.addEventListener('click', function () {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Mobile dropdown toggle
+        if (mobileDropdownToggle) {
+            mobileDropdownToggle.addEventListener('click', function () {
+                mobileDropdownToggle.classList.toggle('active');
+                mobileDropdownMenu.classList.toggle('active');
+            });
+        }
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            if (mobileDropdownToggle) {
+                mobileDropdownToggle.classList.remove('active');
+                mobileDropdownMenu.classList.remove('active');
+            }
+        }
+
+        // Close menu on resize to desktop
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
+                   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+                   font-src 'self' https://fonts.gstatic.com; 
+                   img-src 'self' data: https:; 
+                   script-src 'self' 'unsafe-inline';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGB | Zimmerei Müller</title>
+    <meta name="description" content="AGB der Zimmerei Müller – Allgemeine Geschäftsbedingungen.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Markenfarben aus Logo */
+            --brand-red: #B32D24;
+            --brand-red-dark: #8B241D;
+            --brand-yellow: #F9D800;
+            --brand-yellow-light: #FFE53B;
+
+            /* Design-System */
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E5E5;
+            --gray-300: #D4D4D4;
+            --gray-500: #737373;
+            --gray-700: #404040;
+            --gray-900: #171717;
+
+            /* Abstände */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+
+            /* Typografie */
+            --font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--white);
+            color: var(--gray-900);
+            line-height: 1.6;
+            font-weight: 400;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ===================== NAVIGATION ===================== */
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+            color: var(--gray-900);
+            transition: all 0.2s;
+        }
+
+        .nav-logo:hover {
+            transform: translateY(-2px);
+            filter: drop-shadow(0 6px 16px rgba(210, 53, 38, 0.3));
+        }
+
+        .nav-logo-img {
+            height: 54px;
+            width: auto;
+            border-radius: 4px;
+        }
+
+        /* Hamburger Menu Button */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            gap: 5px;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--gray-700);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--white);
+            z-index: 99;
+            padding: var(--space-lg);
+            flex-direction: column;
+            gap: var(--space-md);
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--gray-900);
+            font-size: 18px;
+            font-weight: 600;
+            padding: var(--space-md);
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--gray-100);
+        }
+
+        .mobile-menu .nav-cta {
+            background: var(--brand-red);
+            color: var(--white);
+            text-align: center;
+            margin-top: var(--space-md);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--brand-red);
+        }
+
+        .nav-cta {
+            padding: 10px 20px;
+            background: #D23526;
+            color: #FAE439;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: all 0.2s;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000, 1px 0 0 #000;
+        }
+
+        .nav-cta:hover {
+            background: var(--brand-red-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(210, 53, 38, 0.3);
+        }
+
+        /* ===================== DROPDOWN MENU ===================== */
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .dropdown-icon {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.2s;
+        }
+
+        .nav-dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            min-width: 200px;
+            padding: var(--space-xs) 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+            z-index: 1000;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--gray-700);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-dropdown-menu a:hover {
+            background: var(--gray-50);
+            color: var(--brand-red);
+            padding-left: 24px;
+        }
+
+        /* Mobile Dropdown */
+        .mobile-dropdown {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-dropdown-toggle {
+            text-decoration: none;
+            color: var(--gray-900);
+            font-size: 18px;
+            font-weight: 600;
+            padding: var(--space-md);
+            border-radius: 8px;
+            transition: background 0.2s;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mobile-dropdown-toggle::after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.2s;
+        }
+
+        .mobile-dropdown-toggle.active::after {
+            transform: rotate(180deg);
+        }
+
+        .mobile-dropdown-toggle:hover {
+            background: var(--gray-100);
+        }
+
+        .mobile-dropdown-menu {
+            display: none;
+            flex-direction: column;
+            padding-left: var(--space-md);
+            gap: 4px;
+        }
+
+        .mobile-dropdown-menu.active {
+            display: flex;
+        }
+
+        .mobile-dropdown-menu a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px var(--space-md);
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            background: var(--gray-100);
+            color: var(--brand-red);
+        }
+
+        /* ===================== CONTENT ===================== */
+
+        .content-section {
+            padding: calc(72px + var(--space-xl)) var(--space-lg) var(--space-3xl);
+            flex: 1;
+        }
+
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--space-lg);
+            color: var(--gray-900);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: var(--space-xl);
+            margin-bottom: var(--space-sm);
+            color: var(--gray-900);
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-top: var(--space-md);
+            margin-bottom: var(--space-sm);
+            color: var(--gray-900);
+        }
+
+        p {
+            margin-bottom: var(--space-md);
+            color: var(--gray-700);
+        }
+
+        ul {
+            margin-bottom: var(--space-md);
+            color: var(--gray-700);
+        }
+
+        strong {
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        a {
+            color: var(--brand-red);
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: var(--brand-red-dark);
+        }
+
+        /* ===================== FOOTER ===================== */
+
+        .footer {
+            padding: var(--space-xl) var(--space-lg);
+            background: #D23526;
+            /* User requested Red */
+            color: #FAE439;
+            /* User requested Yellow */
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-size: 14px;
+            color: #FAE439;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-lg);
+        }
+
+        .footer-link {
+            font-size: 14px;
+            color: #FAE439;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+            color: #FFFFFF;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="zimmerei-mueller-frontpage.html" class="nav-logo">
+                <img src="Pictures/Müller_Logo nur Holzbau ROT.png" alt="Holzbau-Zimmerei Müller" class="nav-logo-img">
+            </a>
+            <div class="nav-links">
+                <div class="nav-dropdown">
+                    <a href="zimmerei-mueller-frontpage.html#leistungen" class="nav-link nav-dropdown-toggle">
+                        Leistungen
+                        <svg class="dropdown-icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="massivholzhaus.html">Massivholzhaus</a>
+                        <a href="neubau.html">Neubau</a>
+                        <a href="dachsanierung.html">Dachsanierung</a>
+                        <a href="holzrahmenbau.html">Holzrahmenbau</a>
+                        <a href="dachfenster.html">Dachfenster</a>
+                        <a href="aufstockungen.html">Aufstockungen</a>
+                        <a href="dachgauben.html">Dachgauben</a>
+                        <a href="treppenbau.html">Treppenbau</a>
+                        <a href="asbestsanierung.html">Asbestsanierung</a>
+                    </div>
+                </div>
+                <a href="zimmerei-mueller-frontpage.html#referenzen" class="nav-link">Referenzen</a>
+                <a href="ueber-uns.html" class="nav-link">Über uns</a>
+                <a href="zimmerei-mueller-frontpage.html#kontakt" class="nav-cta">Kontakt aufnehmen</a>
+            </div>
+            <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-dropdown">
+            <button class="mobile-dropdown-toggle" id="mobileDropdownToggle">Leistungen</button>
+            <div class="mobile-dropdown-menu" id="mobileDropdownMenu">
+                <a href="massivholzhaus.html" onclick="closeMenu()">Massivholzhaus</a>
+                <a href="neubau.html" onclick="closeMenu()">Neubau</a>
+                <a href="dachsanierung.html" onclick="closeMenu()">Dachsanierung</a>
+                <a href="holzrahmenbau.html" onclick="closeMenu()">Holzrahmenbau</a>
+                <a href="dachfenster.html" onclick="closeMenu()">Dachfenster</a>
+                <a href="aufstockungen.html" onclick="closeMenu()">Aufstockungen</a>
+                <a href="dachgauben.html" onclick="closeMenu()">Dachgauben</a>
+                <a href="treppenbau.html" onclick="closeMenu()">Treppenbau</a>
+                <a href="asbestsanierung.html" onclick="closeMenu()">Asbestsanierung</a>
+            </div>
+        </div>
+        <a href="zimmerei-mueller-frontpage.html#referenzen" onclick="closeMenu()">Referenzen</a>
+        <a href="ueber-uns.html" onclick="closeMenu()">Über uns</a>
+        <a href="zimmerei-mueller-frontpage.html#kontakt" class="nav-cta" onclick="closeMenu()">Kontakt aufnehmen</a>
+    </div>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <div class="content-container">
+            <h1>Allgemeine Geschäftsbedingungen (AGB)</h1>
+
+            <p style="font-size: 14px; color: var(--gray-600); font-style: italic; margin-bottom: var(--space-xl);">
+                <strong>Hinweis:</strong> Diese AGB-Vorlage ist optional und kann verwendet werden, wenn Sie
+                rechtliche Rahmenbedingungen für Ihre Dienstleistungen festlegen möchten. Bitte passen Sie die
+                Platzhalter an Ihre spezifischen Anforderungen an.
+            </p>
+
+            <h2>1. Geltungsbereich</h2>
+            <p>
+                Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen
+            <p>MIT MATTHIAS BESPRECHEN OB DIESE AGB SEOITE benätigt wird
+            </p>
+            <p>
+                <strong>Holzbau-Zimmerei Müller GmbH</strong><br>
+                Kaiserweg 21<br>
+                89558 Böhmenkirch
+            </p>
+            <p>
+                (nachfolgend „Auftragnehmer" genannt) und unseren Kunden (nachfolgend „Auftraggeber" genannt)
+                über die Erbringung von Zimmerei- und Holzbauarbeiten.
+            </p>
+
+            <h2>2. Vertragsabschluss und Angebot</h2>
+            <p>
+                <strong>2.1</strong> Angebote des Auftragnehmers sind freibleibend und unverbindlich, sofern nicht
+                ausdrücklich
+                etwas anderes vereinbart wurde.
+            </p>
+            <p>
+                <strong>2.2</strong> Ein Vertrag kommt erst durch schriftliche Auftragsbestätigung des Auftragnehmers
+                oder
+                durch Beginn der Ausführung der Arbeiten zustande.
+            </p>
+            <p>
+                <strong>2.3</strong> Änderungen oder Ergänzungen des Vertrages bedürfen der Schriftform.
+            </p>
+
+            <h2>3. Leistungsumfang</h2>
+            <p>
+                <strong>3.1</strong> Der Umfang der zu erbringenden Leistungen ergibt sich aus der Leistungsbeschreibung
+                im Angebot bzw. der Auftragsbestätigung.
+            </p>
+            <p>
+                <strong>3.2</strong> Zusatzleistungen, die nicht im ursprünglichen Angebot enthalten sind, werden
+                gesondert
+                berechnet.
+            </p>
+            <p>
+                <strong>3.3</strong> Der Auftraggeber ist verpflichtet, die erforderlichen Vorarbeiten (z.B.
+                Bereitstellung
+                von Strom, Wasser, Lagerplatz) rechtzeitig zu erbringen.
+            </p>
+
+            <h2>4. Preise und Zahlungsbedingungen</h2>
+            <p>
+                <strong>4.1</strong> Alle Preise verstehen sich in Euro zuzüglich der gesetzlichen Mehrwertsteuer.
+            </p>
+            <p>
+                <strong>4.2</strong> Sofern nicht anders vereinbart, gelten folgende Zahlungsbedingungen:
+            </p>
+            <ul style="margin-left: 20px; margin-bottom: var(--space-md);">
+                <li>[Z.B. 30% Anzahlung bei Auftragserteilung]</li>
+                <li>[Z.B. 40% nach Fertigstellung der Roharbeiten]</li>
+                <li>[Z.B. 30% nach vollständiger Fertigstellung innerhalb von 14 Tagen netto]</li>
+            </ul>
+            <p style="font-size: 13px; color: var(--gray-500); font-style: italic;">
+                Hinweis: Bitte passen Sie die Zahlungsbedingungen an Ihre übliche Praxis an.
+            </p>
+            <p>
+                <strong>4.3</strong> Bei Zahlungsverzug werden Verzugszinsen in Höhe von [X]% über dem jeweiligen
+                Basiszinssatz
+                berechnet. [Empfohlen: 9 Prozentpunkte über dem Basiszinssatz]
+            </p>
+
+            <h2>5. Ausführungsfristen und Verzögerungen</h2>
+            <p>
+                <strong>5.1</strong> Vereinbarte Fristen und Termine sind nur dann verbindlich, wenn sie vom
+                Auftragnehmer
+                schriftlich als verbindlich bestätigt wurden.
+            </p>
+            <p>
+                <strong>5.2</strong> Verzögerungen aufgrund höherer Gewalt (z.B. extreme Witterungsverhältnisse,
+                Naturkatastrophen),
+                behördlicher Maßnahmen oder sonstiger vom Auftragnehmer nicht zu vertretender Umstände berechtigen den
+                Auftragnehmer zur angemessenen Verlängerung der Ausführungsfrist.
+            </p>
+            <p>
+                <strong>5.3</strong> Lieferverzögerungen von Materialien berechtigen den Auftragnehmer zur angemessenen
+                Fristverlängerung.
+            </p>
+
+            <h2>6. Abnahme</h2>
+            <p>
+                <strong>6.1</strong> Nach Fertigstellung der Arbeiten hat der Auftraggeber diese unverzüglich
+                abzunehmen.
+            </p>
+            <p>
+                <strong>6.2</strong> Die Abnahme gilt als erfolgt, wenn der Auftraggeber nicht innerhalb von [X]
+                Werktagen
+                [Empfohlen: 5-10 Werktage] nach Fertigstellungsanzeige schriftlich Mängel rügt.
+            </p>
+
+            <h2>7. Gewährleistung</h2>
+            <p>
+                <strong>7.1</strong> Für die ausgeführten Arbeiten gelten die gesetzlichen Gewährleistungsfristen.
+            </p>
+            <p>
+                <strong>7.2</strong> Mängelansprüche verjähren nach den gesetzlichen Vorschriften. Für Bauwerke beträgt
+                die
+                Verjährungsfrist 5 Jahre ab Abnahme, für andere Arbeiten 2 Jahre ab Abnahme.
+            </p>
+            <p>
+                <strong>7.3</strong> Bei berechtigten Mängelrügen ist der Auftragnehmer zunächst zur Nachbesserung
+                berechtigt.
+                Erst nach erfolgloser Nachbesserung kann der Auftraggeber Minderung oder Rücktritt verlangen.
+            </p>
+
+            <h2>8. Haftung</h2>
+            <p>
+                <strong>8.1</strong> Der Auftragnehmer haftet unbeschränkt für Vorsatz und grobe Fahrlässigkeit.
+            </p>
+            <p>
+                <strong>8.2</strong> Bei leichter Fahrlässigkeit haftet der Auftragnehmer nur bei Verletzung
+                wesentlicher
+                Vertragspflichten. Die Haftung ist in diesem Fall auf den vorhersehbaren, vertragstypischen Schaden
+                begrenzt.
+            </p>
+            <p>
+                <strong>8.3</strong> Die Haftungsbeschränkungen gelten nicht bei Verletzung von Leben, Körper oder
+                Gesundheit.
+            </p>
+
+            <h2>9. Eigentumsvorbehalt</h2>
+            <p>
+                Alle gelieferten Materialien und Bauteile bleiben bis zur vollständigen Bezahlung aller Forderungen aus
+                dem Vertragsverhältnis Eigentum des Auftragnehmers.
+            </p>
+
+            <h2>10. Urheberrecht</h2>
+            <p>
+                Alle Planungsunterlagen, Zeichnungen und sonstigen Unterlagen bleiben geistiges Eigentum des
+                Auftragnehmers.
+                Sie dürfen ohne schriftliche Zustimmung nicht an Dritte weitergegeben oder für andere Zwecke verwendet
+                werden.
+            </p>
+
+            <h2>11. Datenschutz</h2>
+            <p>
+                Die Verarbeitung personenbezogener Daten erfolgt gemäß den Bestimmungen der Datenschutz-Grundverordnung
+                (DSGVO).
+                Weitere Informationen finden Sie in unserer <a href="datenschutz.html"
+                    style="color: var(--brand-red);">Datenschutzerklärung</a>.
+            </p>
+
+            <h2>12. Schlussbestimmungen</h2>
+            <p>
+                <strong>12.1</strong> Es gilt das Recht der Bundesrepublik Deutschland.
+            </p>
+            <p>
+                <strong>12.2</strong> Erfüllungsort und Gerichtsstand ist [ORT DES FIRMENSITZES], sofern der
+                Auftraggeber
+                Kaufmann, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen ist.
+            </p>
+            <p>
+                <strong>12.3</strong> Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, berührt dies
+                die
+                Wirksamkeit der übrigen Bestimmungen nicht.
+            </p>
+
+            <p style="margin-top: var(--space-xl); font-size: 14px; color: var(--gray-600);">
+                <strong>Stand:</strong> [DATUM EINFÜGEN, z.B. Februar 2025]
+            </p>
+
+            <p
+                style="margin-top: var(--space-lg); padding: var(--space-md); background: var(--gray-100); border-left: 4px solid var(--brand-red); font-size: 13px; color: var(--gray-700);">
+                <strong>⚠️ Wichtiger rechtlicher Hinweis:</strong> Diese AGB-Vorlage dient nur als Grundlage und ersetzt
+                keine
+                rechtliche Beratung. Wir empfehlen dringend, diese AGB von einem Fachanwalt für Handels- und
+                Gesellschaftsrecht
+                oder der zuständigen Handwerkskammer prüfen und anpassen zu lassen, bevor Sie sie verwenden.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                © 2026 Holzbau-Zimmerei Müller GmbH · Schnittlingen
+            </div>
+            <div class="footer-links">
+                <a href="impressum.html" class="footer-link">Impressum</a>
+                <a href="datenschutz.html" class="footer-link">Datenschutz</a>
+                <a href="agb.html" class="footer-link">AGB</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileDropdownToggle = document.getElementById('mobileDropdownToggle');
+        const mobileDropdownMenu = document.getElementById('mobileDropdownMenu');
+
+        hamburger.addEventListener('click', function () {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Mobile dropdown toggle
+        if (mobileDropdownToggle) {
+            mobileDropdownToggle.addEventListener('click', function () {
+                mobileDropdownToggle.classList.toggle('active');
+                mobileDropdownMenu.classList.toggle('active');
+            });
+        }
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            if (mobileDropdownToggle) {
+                mobileDropdownToggle.classList.remove('active');
+                mobileDropdownMenu.classList.remove('active');
+            }
+        }
+
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+
+</html>
