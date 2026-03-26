@@ -71,7 +71,7 @@ Für jedes Problem:
 **Beispiel - SICHER:**
 ```html
 <a href="#section">Click</a>
-<img src="bild.jpg" alt="Beschreibung">
+<img src="bild.webp" alt="Beschreibung">
 ```
 
 ### B) Externe Ressourcen & CDN-Security

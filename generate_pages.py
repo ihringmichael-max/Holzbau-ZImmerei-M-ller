@@ -7,56 +7,56 @@ pages = [
         "filename": "neubau.html",
         "title": "Neubau",
         "headline": "Neubau",
-        "image": "Pictures/Neubau_Dachstuhl.png",
+        "image": "Pictures/Neubau_Dachstuhl.webp",
         "desc": "Ihr Neubau-Projekt mit der Zimmerei Müller. Wir realisieren Ihren Traum vom Eigenheim."
     },
     {
         "filename": "dachsanierung.html",
         "title": "Dachsanierung",
         "headline": "Dachsanierung",
-        "image": "Pictures/Dachsanierung.png",
+        "image": "Pictures/Dachsanierung.webp",
         "desc": "Professionelle Dachsanierung für Werterhalt und Energieeffizienz."
     },
     {
         "filename": "holzrahmenbau.html",
         "title": "Holzrahmenbau",
         "headline": "Holzrahmenbau",
-        "image": "Pictures/Holzrahmenbau.png",
+        "image": "Pictures/Holzrahmenbau.webp",
         "desc": "Moderner Holzrahmenbau: Flexibel, ökologisch und schnell."
     },
     {
         "filename": "dachfenster.html",
         "title": "Dachfenster",
         "headline": "Dachfenster",
-        "image": "Pictures/Dachfenster.png",
+        "image": "Pictures/Dachfenster.webp",
         "desc": "Mehr Licht und Luft mit neuen Dachfenstern. Einbau und Austausch vom Profi."
     },
     {
         "filename": "aufstockungen.html",
         "title": "Aufstockungen",
         "headline": "Aufstockungen",
-        "image": "Pictures/Aufstockung-neu-modifiziert.png",
+        "image": "Pictures/Aufstockung-neu-modifiziert.webp",
         "desc": "Mehr Wohnraum durch Aufstockung. Wir erweitern Ihr Gebäude nach oben."
     },
     {
         "filename": "asbestsanierung.html",
         "title": "Asbestsanierung",
         "headline": "Asbestsanierung",
-        "image": "Pictures/Asbestsanierung.png",
+        "image": "Pictures/Asbestsanierung.webp",
         "desc": "Fachgerechte Asbestsanierung nach TRGS 519. Sicherheit geht vor."
     },
     {
         "filename": "treppenbau.html",
         "title": "Treppenbau",
         "headline": "Treppenbau",
-        "image": "Pictures/Treppe.png",
+        "image": "Pictures/Treppe.webp",
         "desc": "Individuelle Holztreppen – Funktionalität und Design in Perfektion."
     },
     {
         "filename": "dachgauben.html",
         "title": "Dachgauben",
         "headline": "Dachgauben",
-        "image": "Pictures/Dachgaube.png",
+        "image": "Pictures/Dachgaube.webp",
         "desc": "Dachgauben für mehr Platz und Licht im Dachgeschoss."
     }
 ]
@@ -92,7 +92,7 @@ for page in pages:
     
     # Replace header/visuals
     new_content = new_content.replace('<h1 class="detail-title">Massivholzhaus</h1>', f'<h1 class="detail-title">{page["headline"]}</h1>')
-    new_content = new_content.replace('Pictures/Bsp-SORA1.png', page["image"])
+    new_content = new_content.replace('Pictures/Bsp-SORA1.webp', page["image"])
     new_content = new_content.replace('alt="Massivholzhaus Zimmerei Müller"', f'alt="{page["headline"]} Zimmerei Müller"')
     
     # Replace Accordion Titles
