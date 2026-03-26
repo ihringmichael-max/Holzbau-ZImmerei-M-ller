@@ -156,7 +156,7 @@ DROPDOWN_CSS = """
 
 # Desktop navigation dropdown HTML
 DESKTOP_DROPDOWN_HTML = """                <div class="nav-dropdown">
-                    <a href="zimmerei-mueller-frontpage.html#leistungen" class="nav-link nav-dropdown-toggle">
+                    <a href="index.html#leistungen" class="nav-link nav-dropdown-toggle">
                         Leistungen
                         <svg class="dropdown-icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"

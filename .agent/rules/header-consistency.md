@@ -5,7 +5,7 @@ trigger: always_on
 # Header-Konsistenz-Regeln
 
 - Alle Seiten (Frontpage, Unterseiten, Leistungsseiten) müssen einen identischen Header haben
-- Der Header der Frontpage (`zimmerei-mueller-frontpage.html`) ist die Vorlage
+- Der Header der Frontpage (`index.html`) ist die Vorlage
 - Header-Elemente müssen exakt gleich sein:
   - Navigation-Container (`.nav`, `.nav-container`)
   - Logo (`.nav-logo`, `.nav-logo-img`)

@@ -8,7 +8,7 @@ from pathlib import Path
 # Verzeichnis
 BASE = Path("/Users/michael-ihring/Documents/Zimmrei-Müller/Webpage/Antigravity")
 
-# Seiten die bearbeitet werden müssen (ohne neubau.html, ueber-uns.html, zimmerei-mueller-frontpage.html)
+# Seiten die bearbeitet werden müssen (ohne neubau.html, ueber-uns.html, index.html)
 FILES = [
     "holzrahmenbau.html",
     "dachsanierung.html",

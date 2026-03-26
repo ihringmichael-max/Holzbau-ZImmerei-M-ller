@@ -1,7 +1,7 @@
 # Footer-Konsistenz-Regeln
 
 - Alle Seiten (Frontpage, Unterseiten, Leistungsseiten, rechtliche Seiten) müssen einen identischen Footer haben
-- Der Footer der Frontpage (`zimmerei-mueller-frontpage.html`) ist die Vorlage
+- Der Footer der Frontpage (`index.html`) ist die Vorlage
 - Footer-Elemente müssen exakt gleich sein:
   - Container (`.footer`, `.footer-container`)
     - Padding: `var(--space-xl) var(--space-lg)`
