@@ -22,7 +22,6 @@ FILES_TO_MODIFY = [
     "massivholzhaus.html",
     "impressum.html",
     "datenschutz.html",
-    "agb.html",
 ]
 
 BASE_DIR = Path(__file__).parent

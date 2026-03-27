@@ -21,7 +21,6 @@ FILES = [
     "referenzen. html",
     "impressum.html",
     "datenschutz.html",
-    "agb.html",
 ]
 
 # Lese neubau.html als Template
